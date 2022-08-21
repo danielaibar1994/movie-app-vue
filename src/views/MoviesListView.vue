@@ -1,6 +1,6 @@
 <template>
     <main>
-        <h1 style="padding: 0 24px;">Movies Pages</h1>
+        <h1 class="movies-header">Movies Pages</h1>
         <MoviesListComponent />
     </main>
 </template>
@@ -9,6 +9,8 @@
 import MoviesListComponent from '@/components/MoviesListComponent.vue';
 </script>
 
-
 <style>
+.movies-header {
+    padding: 0 24px;
+}
 </style>

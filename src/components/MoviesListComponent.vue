@@ -1,11 +1,12 @@
 <template >
-    <div class="container" style="width: 100%; padding: 16px; max-width: 100%;">
+    <div class="container movies-container">
         <div v-if="isLoadingMovies" class="loading-container">
             <RingLoaderComponent />
         </div>
-        <div class="row" v-if="!isLoadingMovies" style="justify-content: space-between; padding: 16px;">
-            <div v-for="movie of items" :key="movie.id" class="card" style="width: 18rem; margin: 8px;">
-                <img class="card-img-top" v-bind:src="movie.poster" v-bind:alt="movie.title">
+        <div class="row movies-row" v-if="!isLoadingMovies">
+            <div v-for="movie of items" :key="movie.id" class="card">
+                <img class="card-img-top" :src="movie.poster ? movie.poster : '/images/not_found.png'"
+                    v-bind:alt="movie.title" @error="imgPlaceholder">
                 <div class="card-body">
                     <h5 class="card-title">{{ movie.title }}</h5>
                     <router-link class="btn btn-primary" :to="{ path: `/movies/${movie.id}` }">
@@ -33,15 +34,21 @@ export default {
         const moviesStore = useMoviesStore();
         const { items, isLoadingMovies } = storeToRefs(moviesStore);
 
+        const imgPlaceholder = (e) => {
+            e.target.src = "/images/not_found.png"
+        }
+
         // if you want that when navigate to /movies reload the movies store, 
         // you need to add onMounted here
-        return { items, isLoadingMovies }
+        return { items, isLoadingMovies, imgPlaceholder }
     }
 }
 </script>
 <style>
 .card {
     color: black;
+    width: 18rem;
+    margin: 8px;
 }
 
 .card-img-top {
@@ -88,5 +95,16 @@ export default {
 
 a.float:hover {
     text-decoration: none;
+}
+
+.movies-row {
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.movies-container {
+    width: 100%;
+    padding: 16px;
+    max-width: 100%;
 }
 </style>

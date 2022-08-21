@@ -5,7 +5,7 @@
     <input type="text" name="" id="" placeholder="ingrese dato" v-model.trim="genreInput" class="form-control"
         v-on:keydown.enter.prevent='addCategory'>
 
-    <div class="tags-container" style="margin: 8px 0;">
+    <div class="tags-container">
         <button v-for="genre of props.genresList" :key="genre" type="button" class="btn btn-primary">
             {{ genre }} <span class="badge badge-light" @click="deleteCategory(genre)">&times;</span>
         </button>
@@ -36,7 +36,6 @@ function deleteCategory(genre: string) {
 }
 </script>
 
-
 <!-- OTHER METHOD -->
 <!-- <script>
 import { ref } from 'vue';
@@ -44,21 +43,7 @@ export default {
     props: ['genresList'],
     emits: ['addCategory', 'deleteCategory'],
     setup(props, { emit }) {
-        // const emit = defineEmits(['addCategory', 'deleteCategory'])
-        const genreInput = ref("");
-
-        function addCategory() {
-            if (genreInput.value === "") {
-                return;
-            }
-
-            emit('addCategory', genreInput.value);
-            genreInput.value = '';
-        }
-
-        function deleteCategory(genre) {
-            emit('deleteCategory', genre);
-        }
+      ...
 
         return {
             genreInput,
@@ -98,5 +83,9 @@ export default {
 
 .dropdown-menu li:hover {
     background-color: lightgray;
+}
+
+.tags-container {
+    margin: 8px 0;
 }
 </style>

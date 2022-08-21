@@ -4,11 +4,11 @@
     </div>
 
     <div v-if="(!isLoadingMovieDetail && movieItem) && !isDeletingMovie">
-        <div class="card" style="width: 60vw; margin: 0 auto;">
+        <div class="card movie-card">
             <img class="card-img-top" v-bind:src="movieItem.poster" alt="{{movieItem.title}}">
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
-                <div class="tags-container" style="margin: 8px 0;">
+                <div class="tags-container">
                     <button v-for="genre of movieItem.genre" :key="genre" type="button" class="btn btn-primary">
                         {{ genre }}
                     </button>
@@ -133,4 +133,12 @@ export default {
 }
 </script>
 <style>
+.movie-card {
+    width: 60vw;
+    margin: 0 auto;
+}
+
+.tags-container {
+    margin: 8px 0;
+}
 </style>

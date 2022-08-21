@@ -13,7 +13,7 @@
         </ul>
     </div>
 
-    <div class="tags-container" style="margin: 8px 0;">
+    <div class="tags-container">
         <button v-for="companyId of companiesMovieList" :key="companyId" type="button" class="btn btn-primary">
             {{ getCompanyName(companyId) }}
             <span class="badge badge-light" @click="deleteCompany(companyId)">&times;</span>
@@ -90,4 +90,7 @@ export default {
 }
 </script>
 <style>
+.tags-container {
+    margin: 8px 0;
+}
 </style>

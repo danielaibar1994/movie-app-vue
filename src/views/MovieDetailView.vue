@@ -8,6 +8,5 @@ import MovieDetailComponent from '@/components/MovieDetailComponent.vue';
     </div>
 </template>
 
-
 <style>
 </style>

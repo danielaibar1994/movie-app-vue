@@ -8,6 +8,5 @@ import MovieCreationComponent from '@/components/MovieCreationComponent.vue';
     </div>
 </template>
 
-
 <style>
 </style>

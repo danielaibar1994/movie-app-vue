@@ -12,7 +12,7 @@
         </ul>
     </div>
 
-    <div class="tags-container" style="margin: 8px 0;">
+    <div class="tags-container">
         <button v-for="actorId of actorsMovieList" :key="actorId" type="button" class="btn btn-primary">
             {{ getActorName(actorId) }} <span class="badge badge-light" @click="deleteActor(actorId)">&times;</span>
         </button>
@@ -44,7 +44,6 @@ export default {
             return actorsStore.items.filter(actor => {
                 const searchTerm = actorInput.value.toLocaleLowerCase();
                 const filteredString = searchTerm.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
 
                 const firstNameTerm = actor.first_name.toLocaleLowerCase();
                 const filteredFirstNameTerm = firstNameTerm.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -95,4 +94,7 @@ export default {
 }
 </script>
 <style>
+.tags-container {
+    margin: 8px 0;
+}
 </style>

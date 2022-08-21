@@ -8,6 +8,5 @@ import MovieEditComponent from '@/components/MovieEditComponent.vue';
     </div>
 </template>
 
-
 <style>
 </style>
